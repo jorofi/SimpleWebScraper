@@ -1,4 +1,4 @@
-﻿@model DownloadConfigurationModel
+﻿@model Configuration
 
 @{
     ViewData["Title"] = "Home Page";
@@ -12,6 +12,10 @@
     <div class="form-group">
         <label asp-for="Endpoint"></label>
         <input type="text" asp-for="Endpoint" value="http://archive.luftdaten.info/" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ArchiveDirectory"></label>
+        <input type="text" asp-for="ArchiveDirectory" value="D:\Archive" class="form-control" />
     </div>
     <div class="form-group">
         <label asp-for="StartDate"></label>

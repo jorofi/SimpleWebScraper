@@ -6,6 +6,8 @@ namespace DownloadAirInfo.Models.Download
     {
         public string Endpoint { get; set; }
 
+        public string ArchiveDirectory { get; set; }
+
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
