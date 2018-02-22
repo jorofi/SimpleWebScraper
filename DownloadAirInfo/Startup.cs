@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DownloadAirInfo.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DownloadAirInfo
+namespace DownloadAirInfo.Website
 {
     public class Startup
     {
@@ -21,6 +22,7 @@ namespace DownloadAirInfo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IDownloadService, DownloadLuftdatenService>();
             services.AddMvc();
         }
 
@@ -43,7 +45,7 @@ namespace DownloadAirInfo
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=DownloadLuftdaten}/{id?}");
             });
         }
     }

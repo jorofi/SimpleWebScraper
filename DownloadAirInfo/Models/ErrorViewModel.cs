@@ -1,6 +1,6 @@
 using System;
 
-namespace DownloadAirInfo.Models
+namespace DownloadAirInfo.Website.Models
 {
     public class ErrorViewModel
     {

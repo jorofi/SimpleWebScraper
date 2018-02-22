@@ -4,27 +4,34 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DownloadAirInfo.Models;
+using DownloadAirInfo.Website.Models;
+using DownloadAirInfo.Services;
+using DownloadModels = DownloadAirInfo.Models.Download;
 
-namespace DownloadAirInfo.Controllers
+namespace DownloadAirInfo.Website.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IDownloadService _downloadService { get; set; }
+
+        public HomeController(IDownloadService downloadService)
+        {
+            _downloadService = downloadService;
+        }
+
+        [HttpGet]
+        public IActionResult DownloadLuftdaten()
         {
             return View();
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public async Task<IActionResult> DownloadLuftdaten(DownloadModels.Configuration configurationModel)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
+            if (ModelState.IsValid)
+            {
+                await _downloadService.DownloadAsync(configurationModel);
+            }
 
             return View();
         }
