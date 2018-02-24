@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DownloadAirInfo.Services.Helpers
+namespace SimpleWebScraper.Services.Helpers
 {
     public class DateHelper
     {

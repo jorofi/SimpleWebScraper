@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace DownloadAirInfo.Website
+namespace SimpleWebScraper.Website
 {
     public class Program
     {

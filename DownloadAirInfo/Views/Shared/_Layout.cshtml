@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DownloadAirInfo</title>
+    <title>@ViewData["Title"] - Simple Web Scraper</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,12 +26,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">DownloadAirInfo</a>
+                <a asp-area="" asp-controller="Scrapers" asp-action="WeatherUnderground" class="navbar-brand">Home</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="DownloadLuftdaten">Download luftdaten</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="DownloadWeatherUnderground">Download Weather Underground</a></li>
+                    <li><a asp-area="" asp-controller="Scrapers" asp-action="Luftdaten">Luftdaten</a></li>
+                    <li><a asp-area="" asp-controller="Scrapers" asp-action="WeatherUnderground">Weather Underground</a></li>
                 </ul>
             </div>
         </div>
@@ -40,7 +40,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - DownloadAirInfo</p>
+            <p>&copy; @DateTime.Now.Year - Simple Web Scraper</p>
         </footer>
     </div>
 

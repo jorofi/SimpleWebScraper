@@ -4,15 +4,15 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using DownloadAirInfo.Models.Download;
-using DownloadAirInfo.Services.Helpers;
+using SimpleWebScraper.Models.Scrapers;
+using SimpleWebScraper.Services.Helpers;
 using HtmlAgilityPack;
 
-namespace DownloadAirInfo.Services
+namespace SimpleWebScraper.Services
 {
-    public class DownloadWeatherUndergroundService : IDownloadService
+    public class WeatherUndergroundScraperService : IScraperService
     {
-        public async Task DownloadAsync(Configuration configuration)
+        public async Task StartScrapingAsync(ScraperConfiguration configuration)
         {
             if (!Directory.Exists(configuration.ArchiveDirectory))
             {
@@ -84,7 +84,7 @@ namespace DownloadAirInfo.Services
                 }
                 else
                 {
-                    newLine.Append(cell.InnerText.HtmlNormalization());
+                    newLine.Append(cell.InnerText.NormalizeWeatherUnderground());
                     newLine.Append(",");
                 }
             }

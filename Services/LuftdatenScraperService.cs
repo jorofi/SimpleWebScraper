@@ -5,15 +5,15 @@ using System.IO;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using DownloadAirInfo.Models.Download;
-using DownloadAirInfo.Services.Helpers;
+using SimpleWebScraper.Models.Scrapers;
+using SimpleWebScraper.Services.Helpers;
 using HtmlAgilityPack;
 
-namespace DownloadAirInfo.Services
+namespace SimpleWebScraper.Services
 {
-    public class DownloadLuftdatenService : IDownloadService
+    public class LuftdatenScraperService : IScraperService
     {
-        public async Task DownloadAsync(Configuration configuration)
+        public async Task StartScrapingAsync(ScraperConfiguration configuration)
         {
             if(!Directory.Exists(configuration.ArchiveDirectory))
             {

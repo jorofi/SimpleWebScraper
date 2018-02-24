@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace DownloadAirInfo.Services.Helpers
+namespace SimpleWebScraper.Services.Helpers
 {
     public static class StringExtensions
     {
-        public static string HtmlNormalization(this String str)
+        public static string NormalizeWeatherUnderground(this String str)
         {
             return str
                 .Replace("\n", string.Empty)

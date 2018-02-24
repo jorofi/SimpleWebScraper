@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DownloadAirInfo.Services;
+using SimpleWebScraper.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DownloadAirInfo.Website
+namespace SimpleWebScraper.Website
 {
     public class Startup
     {
@@ -22,8 +22,8 @@ namespace DownloadAirInfo.Website
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<DownloadLuftdatenService, DownloadLuftdatenService>();
-            services.AddTransient<DownloadWeatherUndergroundService, DownloadWeatherUndergroundService>();
+            services.AddTransient<LuftdatenScraperService, LuftdatenScraperService>();
+            services.AddTransient<WeatherUndergroundScraperService, WeatherUndergroundScraperService>();
             services.AddMvc();
         }
 
@@ -46,7 +46,7 @@ namespace DownloadAirInfo.Website
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=DownloadLuftdaten}/{id?}");
+                    template: "{controller=Scrapers}/{action=WeatherUnderground}/{id?}");
             });
         }
     }

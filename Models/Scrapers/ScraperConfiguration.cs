@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace DownloadAirInfo.Models.Download
+namespace SimpleWebScraper.Models.Scrapers
 {
-    public class Configuration
+    public class ScraperConfiguration
     {
         public string Endpoint { get; set; }
 

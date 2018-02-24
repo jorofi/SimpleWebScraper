@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>DownloadAirInfo.Services</AssemblyName>
-    <RootNamespace>DownloadAirInfo.Services</RootNamespace>
+    <AssemblyName>SimpleWebScraper.Services</AssemblyName>
+    <RootNamespace>SimpleWebScraper.Services</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 using System;
 
-namespace DownloadAirInfo.Website.Models
+namespace SimpleWebScraper.Website.Models
 {
     public class ErrorViewModel
     {
