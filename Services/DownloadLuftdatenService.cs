@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using DownloadAirInfo.Models.Download;
+using DownloadAirInfo.Services.Helpers;
 using HtmlAgilityPack;
 
 namespace DownloadAirInfo.Services
@@ -30,7 +31,7 @@ namespace DownloadAirInfo.Services
                 document.LoadHtml(endpointHtml);
 
                 var links = document.DocumentNode.SelectNodes("//a");
-                foreach (DateTime day in EachDay(configuration.StartDate, configuration.EndDate))
+                foreach (DateTime day in DateHelper.EachDay(configuration.StartDate, configuration.EndDate))
                 {
                     var link = document.DocumentNode.SelectSingleNode("//a[starts-with(@href, '" + day.ToString("yyyy-MM-dd") + "')]");
                     if (link != null)
@@ -55,12 +56,6 @@ namespace DownloadAirInfo.Services
                     Thread.Sleep(configuration.SleepTime);
                 }
             }
-        }
-
-        private IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
-        {
-            for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
-                yield return day;
         }
     }
 }

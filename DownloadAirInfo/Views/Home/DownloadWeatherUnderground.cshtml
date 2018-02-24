@@ -1,0 +1,35 @@
+﻿@model Configuration
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="page-header">
+    <h1>Download Weather Underground</h1>
+</div>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Endpoint"></label>
+        <input type="text" asp-for="Endpoint" value="https://www.wunderground.com/history/airport/LBSF/{DATE}/DailyHistory.html" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ArchiveDirectory"></label>
+        <input type="text" asp-for="ArchiveDirectory" value="D:\Archive" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="StartDate"></label>
+        <input type="text" asp-for="StartDate" value="2015-10-01" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EndDate"></label>
+        <input type="text" asp-for="EndDate" value="@DateTime.Now.Date.ToString("yyyy-MM-dd")" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SleepTime"></label>
+        <input type="text" asp-for="SleepTime" value="1000" class="form-control" />
+    </div>
+    <button type="submit" class="btn">Submit</button>
+</form>
+
+<div asp-validation-summary="All"></div>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DownloadAirInfo.Website.Models;
@@ -12,11 +9,14 @@ namespace DownloadAirInfo.Website.Controllers
 {
     public class HomeController : Controller
     {
-        public IDownloadService _downloadService { get; set; }
+        public IDownloadService _downloadLuftdatenService { get; set; }
 
-        public HomeController(IDownloadService downloadService)
+        public IDownloadService _downloadWeatherUndergroundService { get; set; }
+
+        public HomeController(DownloadLuftdatenService downloadLuftdatenService, DownloadWeatherUndergroundService downloadWeatherUndergroundService)
         {
-            _downloadService = downloadService;
+            _downloadLuftdatenService = downloadLuftdatenService;
+            _downloadWeatherUndergroundService = downloadWeatherUndergroundService;
         }
 
         [HttpGet]
@@ -30,7 +30,24 @@ namespace DownloadAirInfo.Website.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _downloadService.DownloadAsync(configurationModel);
+                await _downloadLuftdatenService.DownloadAsync(configurationModel);
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult DownloadWeatherUnderground()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DownloadWeatherUnderground(DownloadModels.Configuration configurationModel)
+        {
+            if (ModelState.IsValid)
+            {
+                await _downloadWeatherUndergroundService.DownloadAsync(configurationModel);
             }
 
             return View();
